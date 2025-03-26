@@ -24,16 +24,18 @@ public class Main {
             System.out.println("Links dos PDFs encontrados:");
             pdfLinks.forEach(System.out::println);
 
-            for (int i = 0; i < pdfLinks.size(); i++) {
-                String outputPath = Paths.get("downloads", "Anexo" + (i+1) + ".pdf").toString();
-                fileService.downloadFile(pdfLinks.get(i), outputPath);
-                System.out.println("Arquivo " + outputPath + " baixado com sucesso.");
-            }
-
             List<String> pdfFiles = List.of(
-                    Paths.get("downloads", "anexo1.pdf").toString(),
-                    Paths.get("downloads", "anexo2.pdf").toString()
+                    Paths.get("downloads", "AnexoI.pdf").toString(),
+                    Paths.get("downloads", "AnexoII.pdf").toString()
             );
+
+            fileService.downloadFile(pdfLinks.get(0), pdfFiles.get(0));
+            System.out.println("Arquivo " + pdfFiles.get(0) + " baixado com sucesso.");
+
+            fileService.downloadFile(pdfLinks.get(1), pdfFiles.get(1));
+            System.out.println("Arquivo " + pdfFiles.get(1) + " baixado com sucesso.");
+
+
             fileService.zipFiles(pdfFiles, "downloads/arquivos.zip");
 
             System.out.println("Arquivos compactados com sucesso!");
