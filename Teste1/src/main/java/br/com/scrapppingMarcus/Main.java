@@ -1,7 +1,7 @@
 package br.com.scrapppingMarcus;
 
 import br.com.scrapppingMarcus.api.scrapping.service.FileService;
-import br.com.scrapppingMarcus.api.scrapping.service.Scraper;
+import br.com.scrapppingMarcus.api.scrapping.service.Scrapping;
 import br.com.scrapppingMarcus.impl.scrapping.service.FileServiceImpl;
 import br.com.scrapppingMarcus.impl.scrapping.service.ScrappingService;
 import br.com.scrapppingMarcus.constants.UrlConstants;
@@ -14,15 +14,13 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Scraper scraper = new ScrappingService();
+        Scrapping scrapping = new ScrappingService();
         FileService fileService = new FileServiceImpl();
-
-        String url = UrlConstants.BASE_URL + "/ans/pt-br/acesso-a-informacao/participacao-da-sociedade/atualizacao-do-rol-de-procedimentos";
 
         try {
             Files.createDirectories(Paths.get("downloads"));
 
-            List<String> pdfLinks = scraper.getPdfLinks(url);
+            List<String> pdfLinks = scrapping.getPdfLinks(UrlConstants.BASE_URL);
             System.out.println("Links dos PDFs encontrados:");
             pdfLinks.forEach(System.out::println);
 

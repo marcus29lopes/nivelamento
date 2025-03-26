@@ -10,10 +10,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.*;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class FileServiceImpl implements br.com.scrapppingMarcus.api.scrapping.service.FileService {
-    private static final Logger LOGGER = Logger.getLogger(FileServiceImpl.class.getName());
 
     @Override
     public void downloadFile(String fileUrl, String outputPath) throws IOException {
@@ -24,7 +22,6 @@ public class FileServiceImpl implements br.com.scrapppingMarcus.api.scrapping.se
 
         try (InputStream in = client.send(request, HttpResponse.BodyHandlers.ofInputStream()).body()) {
             Files.copy(in, Paths.get(outputPath), StandardCopyOption.REPLACE_EXISTING);
-            LOGGER.info("Download concluído: " + outputPath);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -43,7 +40,6 @@ public class FileServiceImpl implements br.com.scrapppingMarcus.api.scrapping.se
                 }
             }
             zipOut.finish();
-            LOGGER.info("Arquivos compactados em: " + zipFilePath);
         }
     }
 }

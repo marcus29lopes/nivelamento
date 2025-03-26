@@ -1,6 +1,6 @@
 package br.com.scrapppingMarcus.impl.scrapping.service;
 
-import br.com.scrapppingMarcus.api.scrapping.service.Scraper;
+import br.com.scrapppingMarcus.api.scrapping.service.Scrapping;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class ScrappingService implements Scraper {
+public class ScrappingService implements Scrapping {
 
     @Override
     public List<String> getPdfLinks(String url) throws IOException {
