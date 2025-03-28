@@ -10,5 +10,8 @@
         <module name="Teste2" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Teste3" target="23" />
+    </bytecodeTargetLevel>
   </component>
 </project>
